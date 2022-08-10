@@ -1,0 +1,10 @@
+d9768131e890bf2bd1acfa0d0ccc6da9 *DESCRIPTION
+1941a32b1323282706ce872b39a39194 *NAMESPACE
+3c793a60589163668a009434d764fd36 *R/owl.R
+be7a2750c9a71b85feb23d9b43f375ec *R/owlStat.R
+cdbe589d1e56c6f4302102a5cb96b5f0 *R/peramo-package.R
+4a0a052d087d3d41d191bf09df8b33fa *R/zzz.R
+afbe4209b3bb961ba3e41cbfe79ea507 *build/partial.rdb
+93a26ac1415bdebe3fd490b17e537c9b *man/owl.Rd
+e5565394907daa5b9d6705a2065283a1 *man/owlStat.Rd
+c3f023dad01aa0cf9766243e2712ec8f *man/peramo-package.Rd
