@@ -2,7 +2,7 @@
 #'
 #' Perform permutation-based hypothesis testing for randomized experiments
 #' (Ernst, 2004 \doi{10.1214/088342304000000396}), as described in Pham et al.
-#' (2022) \doi{10.1016/j.chemosphere.2022.136736}>.
+#' (2022) \doi{10.1016/j.chemosphere.2022.136736}.
 #'
 #' @author Duy Nghia Pham & Inna M. Sokolova
 #'
