@@ -1,0 +1,16 @@
+citHeader("To cite peramo in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "Gone with sunscreens: Responses of blue mussels (Mytilus edulis) to a wide concentration range of a UV filter ensulizole",
+  author   = c(person("Duy Nghia", "Pham"),
+  person("Eugene P.", "Sokolov"),
+  person("Halina", "Falfushynska"),
+  person("Inna M.", "Sokolova")),
+  journal  = "Chemosphere",
+  year     = "2022",
+  doi      = "10.1016/j.chemosphere.2022.136736",
+  textVersion = paste(
+"Pham, D. N., Sokolov, E. P., Falfushynska, H., & Sokolova, I. M. (2022). Gone with sunscreens: Responses of blue mussels (Mytilus edulis) to a wide concentration range of a UV filter ensulizole. Chemosphere, 136736. https://doi.org/10.1016/j.chemosphere.2022.136736"
+  )
+)

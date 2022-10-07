@@ -44,7 +44,9 @@ The first name appearing in the first column will determine the
  control group. The other names will be treatment groups.
 }
 \examples{
-ernst2004 <- data.frame(group = rep(c("style1", "style2", "style3"), each = 5 ),
+ernst2004 <- data.frame(
+group = factor(rep(c("style1", "style2", "style3"), each = 5 ),
+levels = c("style1", "style2", "style3")),
 speed = c( 135,91,111,87, 122, 175,130,514,283, NA,105,147,159,107,194))
 owl(ernst2004, type.post = "all")
 

@@ -37,7 +37,9 @@
 #'  \doi{10.1016/j.tree.2021.10.009}.
 #'
 #' @examples
-#' ernst2004 <- data.frame(group = rep(c("style1", "style2", "style3"), each = 5 ),
+#' ernst2004 <- data.frame(
+#' group = factor(rep(c("style1", "style2", "style3"), each = 5 ),
+#' levels = c("style1", "style2", "style3")),
 #' speed = c( 135,91,111,87, 122, 175,130,514,283, NA,105,147,159,107,194))
 #' owl(ernst2004, type.post = "all")
 #'
@@ -70,9 +72,9 @@ owl <- function(df, rand = 9999, alpha.post = 0.05, type.post = "control", seed 
 
     pval <- (sum(T.rand >= T.obs) + 1)/ (rand + 1)
 
-    pval.round <- case_when(pval < 0.001 ~ pval,
-                           pval < 0.01 ~ round(pval, 3),
-                           TRUE ~ round(pval, 2)
+    pval.round <- case_when(pval < 0.001 ~ paste("p < 0.001"),
+                           pval < 0.01 ~ paste("p =", round(pval, 3)),
+                           TRUE ~ paste("p =", round(pval, 2))
     )
 
     main.test <- case_when(pval <= 0.001 ~ "very strong evidence",
