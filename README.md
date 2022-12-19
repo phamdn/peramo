@@ -10,7 +10,7 @@
 install.packages("peramo")
 ```
 
-## Reference
+## Citation
 
 Pham, D. N., Sokolov, E. P., Falfushynska, H., & Sokolova, I. M. (2022). Gone with sunscreens: Responses of blue mussels (Mytilus edulis) to a wide concentration range of a UV filter ensulizole. Chemosphere, 136736. https://doi.org/10.1016/j.chemosphere.2022.136736
 

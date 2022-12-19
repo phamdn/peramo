@@ -1,4 +1,4 @@
-citHeader("To cite peramo in publications use:")
+citHeader("To cite peramo in publications please use:")
 
 citEntry(
   entry    = "Article",
@@ -9,8 +9,13 @@ citEntry(
   person("Inna M.", "Sokolova")),
   journal  = "Chemosphere",
   year     = "2022",
+  month = "12",
+  volume = "309",
+  pages = "136736",
   doi      = "10.1016/j.chemosphere.2022.136736",
   textVersion = paste(
-"Pham, D. N., Sokolov, E. P., Falfushynska, H., & Sokolova, I. M. (2022). Gone with sunscreens: Responses of blue mussels (Mytilus edulis) to a wide concentration range of a UV filter ensulizole. Chemosphere, 136736. https://doi.org/10.1016/j.chemosphere.2022.136736"
+"Pham, D. N., Sokolov, E. P., Falfushynska, H., & Sokolova, I. M. (2022). Gone with sunscreens: Responses of blue mussels (Mytilus edulis) to a wide concentration range of a UV filter ensulizole. Chemosphere, 309, 136736. https://doi.org/10.1016/j.chemosphere.2022.136736"
   )
 )
+
+

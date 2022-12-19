@@ -84,7 +84,7 @@ owl <- function(df, rand = 9999, alpha.post = 0.05, type.post = "control", seed 
                            TRUE ~ "no evidence"
     )
 
-    mad.cric <- quantile(mad.rand, 1-alpha.post)    #controlling familywise error rate
+    mad.cric <- quantile(mad.rand, 1-alpha.post)    #controlling family-wise error rate
 
     if (type.post == "all") post.test <- d.multi.obs >= mad.cric #where the differences (if any) come from
     if (type.post == "control") post.test <- abs(d.multi.obs) >= mad.cric

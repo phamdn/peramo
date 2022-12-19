@@ -9,14 +9,56 @@ twl(
   rand = 4999,
   seed = 1,
   mult = FALSE,
-  type.mult = "control",
-  alpha.mult = 0.05
+  simple = TRUE,
+  control = TRUE,
+  alpha = 0.05
 )
 }
+\arguments{
+\item{df}{a data frame with the first
+and second columns containing the levels of the two main factors and the third column containing the measurement of responses.}
+
+\item{rand}{an integer, the number of randomization samples. The default value
+is 4999.}
+
+\item{seed}{an integer, the seed for random number generation. Setting a seed
+ensures the reproducibility of the result. See \code{\link{set.seed}} for
+more details.}
+
+\item{mult}{a logical, whether to perform multiple comparisons.}
+
+\item{simple}{a logical, whether to perform comparisons for simple effects.}
+
+\item{control}{a logical, whether to perform only comparisons with the control
+group.}
+
+\item{alpha}{a numeric, the Type I error rate for multiple comparisons. The
+default value is 0.05.}
+}
+\value{
+\code{twl} returns a list with possible components: \item{\code{n},
+ \code{n.main1}, and \code{n.main2}}{the sample sizes.} \item{\code{avg},
+ \code{avg.main1}, and \code{avg.main2}}{the mean responses.}
+ \item{\code{Fs}}{the F statistics, p-values, reported form of p-value, and strength of evidence against the null
+ hypotheses.}
+ \item{\code{d.main1sub} and \code{d.main2sub} or \code{d.main1} and \code{d.main2}}{the differences in means for multiple
+ comparisons.}
+ \item{\code{mad.main1sub.cric} and \code{mad.main2sub.cric} or \code{mad.main1.cric} and \code{mad.main2.cric}}{the critical value of maximum absolute
+ differences in means.}
+ \item{\code{mult.test.main1sub} and \code{mult.test.main2sub} or \code{mult.test.main1} and \code{mult.test.main2}}{\code{TRUE} if the
+ differences are significant.}
+}
 \description{
-Two-Way Layout Permutation Test
+\code{twl} performs the global test and multiple comparisons for two-factor
+experiments.
+}
+\details{
+The first levels appearing in the first and second columns will
+ determine the control groups (if any). The other levels will be treatment
+ groups.
 }
 \examples{
+\donttest{
 manly2007 <- data.frame(
 month = factor(rep(c("jun", "jul", "aug", "sep"), each = 6 ),
 levels = c("jun", "jul", "aug", "sep")),
@@ -24,5 +66,18 @@ size = factor(rep(c("small", "large"), each = 3, times = 4),
 levels = c("small", "large")),
 consume = c( 13,242,105,182,21,7,8,59,20,24,312,68,515,488,88,460,1223,990,18,44,21,140,40,27))
 twl(manly2007)
+twl(manly2007, mult = TRUE, simple = TRUE, control = FALSE)
+} #might take more than 5s in some machines
 
+}
+\references{
+Manly, B. F. J. (2007). Randomization, bootstrap, and Monte Carlo
+ methods in biology (3rd ed). Chapman & Hall/ CRC. \cr \cr Ernst, M. D.
+ (2004). Permutation Methods: A Basis for Exact Inference. Statistical
+ Science, 19(4), 676–685. \doi{10.1214/088342304000000396}. \cr \cr Muff, S.,
+ Nilsen, E. B., O’Hara, R. B., & Nater, C. R. (2022). Rewriting results
+ sections in the language of evidence. Trends in Ecology & Evolution, 37(3),
+ 203–210. \doi{10.1016/j.tree.2021.10.009}. \cr \cr Motulsky, H. (2020).
+ GraphPad Statistics Guide. GraphPad Software Inc.
+ \url{https://www.graphpad.com/guides/prism/latest/statistics/index.htm}.
 }

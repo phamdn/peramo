@@ -6,6 +6,33 @@
 \usage{
 twlStat(df, env = parent.frame())
 }
+\arguments{
+\item{df}{a data frame with the levels of the two main factors as the first
+and second columns and the measurement of responses as the third column.}
+
+\item{env}{an environment, to access outer scope variables.}
+}
+\value{
+\code{twlStat} returns a list with at least 4 components:
+ \item{\code{Fs}}{the F statistics for global test.}
+ \item{\code{F.main1} and \code{F.main2}}{the F statistics for the first main
+ factor and the second main factor.}
+ \item{\code{F.int}}{the F statistic for the interaction.} In case of
+ multiple comparisons, additional components are:
+ \item{\code{avg} or \code{avg.main1} and \code{avg.main2}}{the mean
+ responses for multiple
+ comparisons.}
+ \item{\code{d.main1sub} and \code{d.main2sub} or \code{d.main1}
+ and \code{d.main2}}{the differences in means.}
+ \item{\code{mad.main1sub} and \code{mad.main2sub} or \code{mad.main1} and
+ \code{mad.main2}}{the maximum absolute
+  differences in means.}
+}
 \description{
-Test Statistics for Two-Way Layout Permutation Test
+\code{twlStat} computes statistics for \code{twl}. This is not meant to be
+called directly.
+}
+\references{
+Manly, B. F. J. (2007). Randomization, bootstrap, and Monte Carlo
+ methods in biology (3rd ed). Chapman & Hall/ CRC.
 }
