@@ -1,17 +1,18 @@
 Package: peramo
 Type: Package
 Title: Permutation Tests for Randomization Model
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person("Duy Nghia", "Pham", email = "nghiapham@yandex.com",
     role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1349-1710")),
     person("Inna M.", "Sokolova", role = "ths",
     comment = c(ORCID = "0000-0002-2068-4302")))
 Description: Perform permutation-based hypothesis testing for randomized
-    experiments as described in Ernst (2004) <doi:10.1214/088342304000000396>
-    and Manly (2007) <isbn:978-1-58488-541-2>.
+    experiments as suggested in Ludbrook & Dudley (1998) <doi:10.2307/2685470>
+    and Ernst (2004) <doi:10.1214/088342304000000396>, introduced in Pham et al.
+    (2022) <doi:10.1016/j.chemosphere.2022.136736>.
 Depends: R (>= 4.2.0)
-Imports: magrittr (>= 2.0.3), dplyr (>= 1.0.10), stats, utils
-Suggests: multcompView(>= 0.1-8)
+Imports: magrittr (>= 2.0.3), dplyr (>= 1.1.1), lme4 (>= 1.1-32), stats, utils
+Suggests: multcompView (>= 0.1-8), emmeans (>= 1.8.5)
 BugReports: https://github.com/phamdn/peramo/issues
 License: GPL-3
 Encoding: UTF-8
