@@ -4,7 +4,7 @@
 \alias{tw_complex}
 \title{Permutation Test for Two-Way Layout with Extra Factors}
 \usage{
-tw_complex(df, res, mains, nested, nuis, seed = 1, rand = 1999)
+tw_complex(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm = FALSE)
 }
 \arguments{
 \item{df}{a data frame with at least three columns.}
@@ -23,6 +23,8 @@ more details.}
 
 \item{rand}{an integer, the number of randomization samples. The default value
 is 1999.}
+
+\item{emm}{a logical, whether to compute estimated marginal means.}
 }
 \value{
 \code{tw_complex} returns a list with 3 main components:
@@ -46,7 +48,7 @@ experiments with complex design.
 }
 \examples{
 \donttest{
-tw_complex(df = subset(Cu, run == "Jan",
+tw_complex(df = subset(ctm_Cu, run == "Jan",
 select = c("copper", "temp", "sediment")),
 res = "sediment",
 mains = c("copper", "temp"))

@@ -7,9 +7,9 @@
 #'   a wide concentration range of a UV filter ensulizole. Chemosphere, 309,
 #'   136736. \doi{10.1016/j.chemosphere.2022.136736}.
 #' @name ensulizole
-"SoS"
+"mussel_SoS"
 
 #' @rdname ensulizole
-"bmk_gill"
+"mussel_gill"
 #' @rdname ensulizole
-"bmk_digest"
+"mussel_digest"

@@ -13,6 +13,7 @@
 #'  more details.
 #'@param rand an integer, the number of randomization samples. The default value
 #'  is 1999.
+#'@param emm a logical, whether to compute estimated marginal means.
 #'
 #'@details \code{res}, \code{mains}, \code{nested}, and \code{nuis} refer to
 #'  column names in \code{df}. While \code{nuis} column must be a numeric
@@ -40,7 +41,7 @@
 #'
 #' @examples
 #' \donttest{
-#' tw_complex(df = subset(Cu, run == "Jan",
+#' tw_complex(df = subset(ctm_Cu, run == "Jan",
 #' select = c("copper", "temp", "sediment")),
 #' res = "sediment",
 #' mains = c("copper", "temp"))
@@ -50,11 +51,12 @@
 #'
 #'@export
 #'
-tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999){
+tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm = FALSE){
 
     set.seed(seed)
 
     skip <- 0
+    emm_obs <- NULL
 
     #exp_unit
     if (!is.logical(df[, res]) & missing(nested) & missing(nuis)) {
@@ -87,7 +89,7 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999){
 
         for (i in 1:rand) {
 
-            res_new <- sort(df[, res])
+            res_new <- sort(df[, res], na.last = TRUE) #na.last to deal with missing res
             df_new <- data.frame(
                 df[mains],
                 sample(res_new)
@@ -203,6 +205,28 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999){
             F_rand[, i] <- F_new
         }
 
+        if (emm) {
+        #EMM
+
+        emm_obs <- emmeans(TS_obs$lmer,
+                           as.formula(paste("~" , mains[1], "*" , mains[2])))
+        lmer_boot <- bootstrap_parameters(TS_obs$lmer, centrality = "mean")
+        emm_boot <- emmeans(lmer_boot,
+                            as.formula(paste("~" , mains[1], "*" , mains[2])))
+
+        emm_main1 <- suppressMessages(emmeans(TS_obs$lmer, as.formula(paste("~" , mains[1]))))
+        emm_main2 <- suppressMessages(emmeans(TS_obs$lmer, as.formula(paste("~" , mains[2]))))
+
+        #ES
+        sigma <- sigma(TS_obs$lmer)
+        edf <- df.residual(TS_obs$lmer)
+        es_main1 <- eff_size(emm_main1,
+                     sigma, edf, method = "trt.vs.ctrl")
+        es_main2 <- eff_size(emm_main2,
+                     sigma, edf, method = "trt.vs.ctrl")
+        }
+
+
     }
 
 #report
@@ -230,6 +254,18 @@ TS_obs$perm <- data.frame(
 
 if (skip > 0) {
     TS_obs$skip <- skip
+}
+
+if (!is.null(emm_obs)) {
+    TS_obs$emm <- data.frame(as.data.frame(emm_obs)[, 1:3],
+                             lower_ci = as.data.frame(emm_boot)$lower.HPD,
+                             upper_ci = as.data.frame(emm_boot)$upper.HPD
+                             )
+    TS_obs$emm_main1 <- as.data.frame(emm_main1)[,1:2]
+    TS_obs$es_main1 <- as.data.frame(es_main1)[,1:2]
+    TS_obs$emm_main2 <- as.data.frame(emm_main2)[,1:2]
+    TS_obs$es_main2 <- as.data.frame(es_main2)[,1:2]
+    TS_obs$sigma <- sigma
 }
 
 TS_obs

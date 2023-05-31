@@ -18,7 +18,7 @@
 #'@seealso \code{\link{cor.test}}
 #'
 #' @examples
-#' with(subset(Cu, run == "Jan"), XY(sediment, porewater))
+#' with(subset(ctm_Cu, run == "Jan"), XY(sediment, porewater))
 #'
 #'@export
 XY <- function(a, b, rand = 9999, seed = 1, method = c("pearson", "kendall", "spearman")) {

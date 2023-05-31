@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{ensulizole}
 \alias{ensulizole}
-\alias{SoS}
-\alias{bmk_gill}
-\alias{bmk_digest}
+\alias{mussel_SoS}
+\alias{mussel_gill}
+\alias{mussel_digest}
 \title{Biomarker Responses of the Blue Mussels to Organic UV Filters}
 \format{
 An object of class \code{data.frame} with 15 rows and 7 columns.
@@ -22,11 +22,11 @@ Pham, D. N., Sokolov, E. P., Falfushynska, H., & Sokolova, I. M.
   136736. \doi{10.1016/j.chemosphere.2022.136736}.
 }
 \usage{
-SoS
+mussel_SoS
 
-bmk_gill
+mussel_gill
 
-bmk_digest
+mussel_digest
 }
 \description{
 Biomarker Responses of the Blue Mussels to Organic UV Filters

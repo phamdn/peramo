@@ -29,7 +29,7 @@ more details.}
 \code{XY} performs permutation test on correlation coefficients.
 }
 \examples{
-with(subset(Cu, run == "Jan"), XY(sediment, porewater))
+with(subset(ctm_Cu, run == "Jan"), XY(sediment, porewater))
 
 }
 \seealso{
