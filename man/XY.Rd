@@ -4,7 +4,14 @@
 \alias{XY}
 \title{Permutation Test for Correlation Between Paired Samples}
 \usage{
-XY(a, b, rand = 9999, seed = 1, method = c("pearson", "kendall", "spearman"))
+XY(
+  a,
+  b,
+  rand = 9999,
+  seed = 1,
+  use = "everything",
+  method = c("pearson", "kendall", "spearman")
+)
 }
 \arguments{
 \item{a}{a numeric vector, the first variable.}

@@ -4,7 +4,7 @@
 \alias{tw_complex}
 \title{Permutation Test for Two-Way Layout with Extra Factors}
 \usage{
-tw_complex(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm = FALSE)
+tw_complex(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm = TRUE)
 }
 \arguments{
 \item{df}{a data frame with at least three columns.}

@@ -51,7 +51,7 @@
 #'
 #'@export
 #'
-tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm = FALSE){
+tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm = TRUE){
 
     set.seed(seed)
 
@@ -224,6 +224,78 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm 
                      sigma, edf, method = "trt.vs.ctrl")
         es_main2 <- eff_size(emm_main2,
                      sigma, edf, method = "trt.vs.ctrl")
+        }
+
+
+    }
+
+    #obs_unit continuous no nuis
+    if (!is.logical(df[, res]) & !missing(nested) & missing(nuis)) {
+
+        TS_calc_lmer <- function(dataframe, response, main_factors, nested_factor){
+
+            model <- suppressMessages(
+                lmer(
+                    as.formula(
+                        paste(
+                            response, "~" , main_factors[1], "*" , main_factors[2], "+(1|" , nested_factor, ")"
+                        )
+                    ), data = dataframe)
+            )
+
+            result <- list(
+                # lmer = summary(model),
+                lmer = model,
+                anova = anova(model)
+            )
+
+            result
+        }
+
+        TS_obs <- TS_calc_lmer(df, res, mains, nested)
+        F_obs <- TS_obs$anova[c(mains, paste(mains[1],":",mains[2], sep = "")), "F value"]
+
+        F_rand <- matrix(rep(NA, rand*3), nrow = 3)
+
+        nested_levels <- df[, nested] %>% unique
+
+        for (i in 1:rand) {
+            nested_levels_shuffle <- sample(nested_levels)
+
+            location <- sapply(nested_levels_shuffle, function(x){
+                which(df[, nested] == x)
+            })
+
+            df_new <- data.frame(
+                df[, nested][location],
+                df[mains],
+                df[, res][location]
+            ); names(df_new) <- c(nested, mains, res)
+
+            TS_new <- TS_calc_lmer(df_new, res, mains, nested)
+            F_new <- TS_new$anova[c(mains, paste(mains[1],":",mains[2], sep = "")), "F value"]
+            F_rand[, i] <- F_new
+        }
+
+        if (emm) {
+            #EMM
+
+            emm_obs <- emmeans(TS_obs$lmer,
+                               as.formula(paste("~" , mains[1], "*" , mains[2])))
+            lmer_boot <- bootstrap_parameters(TS_obs$lmer, centrality = "mean")
+            emm_boot <- emmeans(lmer_boot,
+                                as.formula(paste("~" , mains[1], "*" , mains[2])))
+
+            emm_main1 <- suppressMessages(emmeans(TS_obs$lmer, as.formula(paste("~" , mains[1]))))
+            emm_main2 <- suppressMessages(emmeans(TS_obs$lmer, as.formula(paste("~" , mains[2]))))
+
+            #ES
+            sigma <- sigma(TS_obs$lmer)
+            edf <- df.residual(TS_obs$lmer)
+            es_main1 <- eff_size(emm_main1,
+                                 sigma, edf, method = "trt.vs.ctrl")
+            es_main2 <- eff_size(emm_main2,
+                                 sigma, edf, method = "trt.vs.ctrl")
         }
 
 

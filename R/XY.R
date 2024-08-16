@@ -21,16 +21,16 @@
 #' with(subset(ctm_Cu, run == "Jan"), XY(sediment, porewater))
 #'
 #'@export
-XY <- function(a, b, rand = 9999, seed = 1, method = c("pearson", "kendall", "spearman")) {
+XY <- function(a, b, rand = 9999, seed = 1, use = "everything", method = c("pearson", "kendall", "spearman")) {
 
     set.seed(seed)
 
-    cor_obs <- cor(a, b, method = method)
+    cor_obs <- cor(a, b, use = use, method = method)
 
     cor_rand <- rep(0, rand)
 
     for (i in 1:rand) {
-        cor_rand[i] <- cor(sample(a), b, method = method)
+        cor_rand[i] <- cor(sample(a), b, use = use, method = method)
     }
 
     pval <- (sum(abs(cor_rand) >= abs(cor_obs)) + 1) / (rand + 1)
