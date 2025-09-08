@@ -25,6 +25,9 @@ is 9999.}
 ensures the reproducibility of the result. See \code{\link{set.seed}} for
 more details.}
 
+\item{use}{a character string, the method regarding missing values. See
+\code{\link{cor}} for more details.}
+
 \item{method}{correlation coefficient, "pearson", "kendall", or "spearman".}
 }
 \value{

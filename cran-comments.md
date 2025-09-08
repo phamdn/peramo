@@ -1,12 +1,11 @@
 # Resubmission
 In this version, I have:
-* revised tw_complex()
-* revised data/ctm and data/ensulizole
+* fixed the NOTE about Rd \link{}
 
 # Test environments
-R-release 4.3.0 and R-devel 4.4.0 on
-* Debian 11.7 AMD64
-* Windows 11 22H2 x64.
+R-release 4.5.1 and R-devel 4.6.0 on
+* x86_64-pc-linux-gnu
+* x86_64-w64-mingw32.
 
 # R CMD check results
-There were no ERRORs or WARNINGs. There might be a NOTE on DOI/URL.
+There were no ERRORs or WARNINGs.

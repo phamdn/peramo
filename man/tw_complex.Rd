@@ -67,5 +67,6 @@ Manly, B. F. J. (2007). Randomization, bootstrap, and Monte Carlo
  \doi{10.1080/00949650215733}.
 }
 \seealso{
-\code{\link{lm}}, \code{\link{glmer}}, and \code{\link{lmer}}.
+\code{\link{lm}}, \code{\link[lme4]{glmer}}, and
+ \code{\link[lme4]{lmer}}.
 }

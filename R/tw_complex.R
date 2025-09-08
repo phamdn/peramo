@@ -29,7 +29,8 @@
 #'  \item{\code{anova}}{anova table.} \item{\code{perm}}{permutation test
 #'  results with F-statistics, p-values, and strength of evidence.}
 #'
-#'@seealso \code{\link{lm}}, \code{\link{glmer}}, and \code{\link{lmer}}.
+#'@seealso \code{\link{lm}}, \code{\link[lme4]{glmer}}, and
+#'  \code{\link[lme4]{lmer}}.
 #'
 #'@references Manly, B. F. J. (2007). Randomization, bootstrap, and Monte Carlo
 #'  methods in biology (3rd ed). Chapman & Hall/ CRC. \cr \cr Ernst, M. D.
@@ -159,7 +160,7 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm 
     #obs_unit continuous
     if (!is.logical(df[, res]) & !missing(nested) & !missing(nuis)) {
 
-        TS_calc_lmer <- function(dataframe, response, main_factors, nested_factor, nuisance_var){
+        TS_calc_lmer1 <- function(dataframe, response, main_factors, nested_factor, nuisance_var){
 
             model <- suppressMessages(
                 lmer(
@@ -179,7 +180,7 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm 
             result
         }
 
-        TS_obs <- TS_calc_lmer(df, res, mains, nested, nuis)
+        TS_obs <- TS_calc_lmer1(df, res, mains, nested, nuis)
         F_obs <- TS_obs$anova[c(mains, paste(mains[1],":",mains[2], sep = "")), "F value"]
 
         F_rand <- matrix(rep(NA, rand*3), nrow = 3)
@@ -200,7 +201,7 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm 
                 df[, res][location]
             ); names(df_new) <- c(nested, mains, nuis, res)
 
-            TS_new <- TS_calc_lmer(df_new, res, mains, nested, nuis)
+            TS_new <- TS_calc_lmer1(df_new, res, mains, nested, nuis)
             F_new <- TS_new$anova[c(mains, paste(mains[1],":",mains[2], sep = "")), "F value"]
             F_rand[, i] <- F_new
         }
@@ -232,7 +233,7 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm 
     #obs_unit continuous no nuis
     if (!is.logical(df[, res]) & !missing(nested) & missing(nuis)) {
 
-        TS_calc_lmer <- function(dataframe, response, main_factors, nested_factor){
+        TS_calc_lmer2 <- function(dataframe, response, main_factors, nested_factor){
 
             model <- suppressMessages(
                 lmer(
@@ -252,7 +253,7 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm 
             result
         }
 
-        TS_obs <- TS_calc_lmer(df, res, mains, nested)
+        TS_obs <- TS_calc_lmer2(df, res, mains, nested)
         F_obs <- TS_obs$anova[c(mains, paste(mains[1],":",mains[2], sep = "")), "F value"]
 
         F_rand <- matrix(rep(NA, rand*3), nrow = 3)
@@ -272,7 +273,7 @@ tw_complex <- function(df, res, mains, nested, nuis, seed = 1, rand = 1999, emm 
                 df[, res][location]
             ); names(df_new) <- c(nested, mains, res)
 
-            TS_new <- TS_calc_lmer(df_new, res, mains, nested)
+            TS_new <- TS_calc_lmer2(df_new, res, mains, nested)
             F_new <- TS_new$anova[c(mains, paste(mains[1],":",mains[2], sep = "")), "F value"]
             F_rand[, i] <- F_new
         }

@@ -1,28 +1,7 @@
-#' peramo: Permutation Tests for Randomization Model
-#'
-#' Perform permutation-based hypothesis testing for randomized experiments as
-#' suggested in Ludbrook & Dudley (1998) \doi{10.2307/2685470} and Ernst (2004)
-#' \doi{10.1214/088342304000000396}, introduced in Pham et al. (2022)
-#' \doi{10.1016/j.chemosphere.2022.136736}.
-#'
-#' @author Duy Nghia Pham & Inna M. Sokolova
-#'
-#' @docType package
-#'
-#' @name peramo-package
-#'
-#' @section Copyright: peramo: Permutation Tests for Randomization Model. \cr
-#'   Copyright (C) 2022-2023  Duy Nghia Pham & Inna M. Sokolova \cr \cr peramo
-#'   is free software: you can redistribute it and/or modify it under the terms
-#'   of the GNU General Public License as published by the Free Software
-#'   Foundation, either version 3 of the License, or (at your option) any later
-#'   version. \cr \cr peramo is distributed in the hope that it will be useful,
-#'   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#'   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-#'   Public License for more details. \cr \cr You should have received a copy of
-#'   the GNU General Public License along with peramo.  If not, see
-#'   \url{https://www.gnu.org/licenses/}.
-#'
+#' @keywords internal
+"_PACKAGE"
+
+## usethis namespace: start
 #' @importFrom magrittr %>%
 #' @importFrom dplyr case_when
 #' @importFrom lme4 lmer glmer
@@ -30,4 +9,5 @@
 #' @importFrom utils head
 #' @importFrom parameters bootstrap_parameters
 #' @importFrom emmeans emmeans eff_size
+## usethis namespace: end
 NULL

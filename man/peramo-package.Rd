@@ -2,28 +2,28 @@
 % Please edit documentation in R/peramo-package.R
 \docType{package}
 \name{peramo-package}
+\alias{peramo}
 \alias{peramo-package}
 \title{peramo: Permutation Tests for Randomization Model}
 \description{
-Perform permutation-based hypothesis testing for randomized experiments as
-suggested in Ludbrook & Dudley (1998) \doi{10.2307/2685470} and Ernst (2004)
-\doi{10.1214/088342304000000396}, introduced in Pham et al. (2022)
-\doi{10.1016/j.chemosphere.2022.136736}.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Perform permutation-based hypothesis testing for randomized experiments as suggested in Ludbrook & Dudley (1998) \doi{10.2307/2685470} and Ernst (2004) \doi{10.1214/088342304000000396}, introduced in Pham et al. (2022) \doi{10.1016/j.chemosphere.2022.136736}.
 }
-\section{Copyright}{
- peramo: Permutation Tests for Randomization Model. \cr
-  Copyright (C) 2022-2023  Duy Nghia Pham & Inna M. Sokolova \cr \cr peramo
-  is free software: you can redistribute it and/or modify it under the terms
-  of the GNU General Public License as published by the Free Software
-  Foundation, either version 3 of the License, or (at your option) any later
-  version. \cr \cr peramo is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-  Public License for more details. \cr \cr You should have received a copy of
-  the GNU General Public License along with peramo.  If not, see
-  \url{https://www.gnu.org/licenses/}.
+\seealso{
+Useful links:
+\itemize{
+  \item Report bugs at \url{https://github.com/phamdn/peramo/issues}
 }
 
-\author{
-Duy Nghia Pham & Inna M. Sokolova
 }
+\author{
+\strong{Maintainer}: Duy Nghia Pham \email{nghiapham@yandex.com} (\href{https://orcid.org/0000-0003-1349-1710}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Inna M. Sokolova (\href{https://orcid.org/0000-0002-2068-4302}{ORCID}) [thesis advisor]
+}
+
+}
+\keyword{internal}

@@ -10,6 +10,8 @@
 #'  ensures the reproducibility of the result. See \code{\link{set.seed}} for
 #'  more details.
 #'@param method correlation coefficient, "pearson", "kendall", or "spearman".
+#'@param use a character string, the method regarding missing values. See
+#'  \code{\link{cor}} for more details.
 #'
 #'@return \code{XY} returns an one-row data frame with 2 columns:
 #'  \item{\code{cor}}{the correlation coefficient.} \item{\code{pval}}{the
